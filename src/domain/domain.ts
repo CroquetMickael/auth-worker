@@ -156,3 +156,27 @@ export const onGetUserInfos = (
             resolve(undefined);
         }, 3000);
     });
+
+export const onLogout = (worker: Worker): Promise<string | undefined> =>
+    new Promise((resolve) => {
+        worker.postMessage({
+            type: WorkerMsg.LOGOUT,
+            payload: {},
+        });
+
+        worker.onmessage = async (event) => {
+            console.log(event);
+            if (event.isTrusted) {
+                switch (event.data.type as WorkerMsg) {
+                    case WorkerMsg.LOGOUT_DONE:
+                        window.location.assign(event.data.payload);
+                    default:
+                        resolve(undefined);
+                }
+            }
+        };
+
+        setTimeout(() => {
+            resolve(undefined);
+        }, 3000);
+    });

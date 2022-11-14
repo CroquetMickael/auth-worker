@@ -7,4 +7,5 @@ export interface OidcConfiguration {
     callbackRedirectUri: string;
     scope: string;
     extra: StringMap;
+    response_mode: string;
 }

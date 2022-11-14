@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="UTF-8" />
         <title>SWs</title>
@@ -17,13 +16,14 @@
                     [
                         'https://jsonplaceholder.typicode.com',
                         'https://api.instantwebtools.net',
+                        'https://oauth2.googleapis.com',
                     ],
                     {
                         openIdConnectProvider: 'https://accounts.google.com',
                         clientId:
-                            '511828570984-7nmej36h9j2tebiqmpqh835naet4vci4.apps.googleusercontent.com',
+                            '715476244663-7cl1n9p7fuib40kd8a63sjchn1rf51kc.apps.googleusercontent.com',
                         callbackRedirectUri:
-                            'http://localhost:3000/callback.html',
+                            'https://localhost:3003/callback.html',
                         scope: 'openid email',
                     }
                 );
@@ -75,10 +75,11 @@
                 <div class="button" onclick="testUserInfo()">
                     <span class="button__mask"></span>
                     <span class="button__text">Test user info</span>
-                    <span class="button__text button__text--bis">Test user info</span>
+                    <span class="button__text button__text--bis"
+                        >Test user info</span
+                    >
                 </div>
             </div>
         </div>
     </body>
-
 </html>

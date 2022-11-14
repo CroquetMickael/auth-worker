@@ -19,6 +19,8 @@ export enum WorkerMsg {
     GET_TOKEN_RES,
     UPDATE_CONTEXT,
     UPDATE_CONTEXT_RES,
+    LOGOUT,
+    LOGOUT_DONE,
 }
 
 export interface Config {
