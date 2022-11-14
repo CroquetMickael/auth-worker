@@ -9,6 +9,7 @@ import {
     onAuthentication,
     onCallback,
     onGetUserInfos,
+    onLogout,
     updateContextWithTokenInfos,
 } from '../domain/domain';
 import { dropInstance, getTokenInfos } from '../repository/workerRepository';
@@ -85,4 +86,6 @@ const callback = () => {
 const getUserInfos = async (): Promise<UserInfos | undefined> =>
     await onGetUserInfos(worker);
 
-export { start, callback, getUserInfos };
+const logout = async () => await onLogout(worker);
+
+export { start, callback, getUserInfos, logout };

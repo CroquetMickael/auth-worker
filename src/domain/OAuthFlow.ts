@@ -70,6 +70,25 @@ export abstract class OAuthFlow {
         return this.userInfos;
     };
 
+    Logout = async () => {
+        if (
+            this.authorizationConf?.endSessionEndpoint &&
+            this.tokenInfos?.accessToken
+        ) {
+            const logoutUrl = new URL(
+                this.authorizationConf?.endSessionEndpoint
+            );
+            logoutUrl.searchParams.set(
+                'id_token_hint',
+                this.tokenInfos.idToken
+            );
+            postMessage({
+                type: WorkerMsg.LOGOUT_DONE,
+                payload: logoutUrl.toString(),
+            });
+        }
+    };
+
     abstract Init(): Promise<void>;
     abstract GetToken(urlToCheck: string): Promise<string | undefined>;
     abstract IsLogged(): boolean;

@@ -70,7 +70,9 @@ self.onmessage = async (event) => {
         case WorkerMsg.UPDATE_CONTEXT:
             const tokenInfos = message.payload.tokenInfos as TokenInfos;
             oAuthFlow.UpdateTokenInfos(tokenInfos);
-
+            break;
+        case WorkerMsg.LOGOUT:
+            oAuthFlow.Logout();
             break;
         default:
             break;
