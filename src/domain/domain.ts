@@ -1,5 +1,9 @@
 import { logger } from '../main/config';
-import { dropOidcConfig, getOidcConfig } from '../repository/workerRepository';
+import {
+    dropOidcConfig,
+    dropTokenInfos,
+    getOidcConfig,
+} from '../repository/workerRepository';
 import { WorkerMsg } from '../types';
 import { OidcConfiguration } from './model/OidcConfiguration';
 import { TokenInfos } from './model/TokenInfos';
@@ -169,6 +173,7 @@ export const onLogout = (worker: Worker): Promise<string | undefined> =>
             if (event.isTrusted) {
                 switch (event.data.type as WorkerMsg) {
                     case WorkerMsg.LOGOUT_DONE:
+                        await dropTokenInfos();
                         window.location.assign(event.data.payload);
                     default:
                         resolve(undefined);

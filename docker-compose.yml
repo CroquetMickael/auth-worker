@@ -1,0 +1,13 @@
+version: '2'
+services:
+    simple-oidc-provider:
+        image: qlik/simple-oidc-provider
+        environment:
+            - CONFIG_FILE=/config/oidc-config.json
+            - DEBUG=*
+            - USERS_FILE=/config/oidc-users.json
+        ports:
+            - '9000:9000'
+        volumes:
+            - './oidc-config.json:/config/oidc-config.json'
+            - './oidc-users.json:/config/oidc-users.json'

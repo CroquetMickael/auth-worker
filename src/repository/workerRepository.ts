@@ -43,6 +43,9 @@ export const getTokenInfos = async (): Promise<TokenInfos> => {
     return data;
 };
 
+export const dropTokenInfos = async (): Promise<void> =>
+    await localForage.removeItem('TOKEN_INFOS');
+
 export const getOidcConfig = async (): Promise<OidcConfiguration> => {
     const data = (await localForage.getItem('OIDC_CONF')) as OidcConfiguration;
 

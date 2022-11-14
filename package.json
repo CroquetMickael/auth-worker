@@ -26,7 +26,7 @@
         "init": "bin/init.js"
     },
     "scripts": {
-        "start": "concurrently \"yarn run build:dev\"  \"vite serve dev\"",
+        "start": "concurrently \"npm run build:dev\"  \"vite serve dev -c conf/vite.config.dev.js\"",
         "build": "tsc --declaration --emitDeclarationOnly --outDir ./dist/types && concurrently \"vite build -c conf/vite.config.js\" \"vite build -c conf/vite.sw.config.js\"",
         "build:dev": "concurrently \"vite build -c conf/vite.config.dev.js --watch\" \"vite build -c conf/vite.sw.config.dev.js\" --watch",
         "serve": "vite preview",
